@@ -31,5 +31,14 @@ public class Grupo {
     
     //Métodos operacionales
     
+    public void annadirEstudiante(int cedula, String nombre, String apellido, String correo){
+        estudiantes.add(new Estudiante(cedula, nombre, apellido, correo));
+        
+    }
+    
+    public void obtenerEstudiante(int cedula){
+        
+        
+    }
     
 }
