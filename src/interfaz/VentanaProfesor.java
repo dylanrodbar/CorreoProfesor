@@ -1,11 +1,24 @@
 package interfaz;
+import java.util.ArrayList;
+import principal.Grupo;
 
 public class VentanaProfesor extends javax.swing.JFrame {
-    private static VentanaPrincipal venPrincipal;
+    private VentanaPrincipal venPrincipal;
+    private ArrayList<Grupo> gruposP;
     public VentanaProfesor(VentanaPrincipal venPrin) {
-        this.venPrincipal = venPrin;
+        
+        
         initComponents();
         
+        
+        this.venPrincipal = venPrin;
+        
+        labelProfesor.setText(venPrincipal.getPrincipal().getNombreProfesorActual()
+                              + " " + venPrincipal.getPrincipal().getApellidoProfesorActual());
+        //Se obtienen los grupos del profesor actual
+        gruposP = venPrincipal.getPrincipal().getProfesorActual().getGrupos();
+        
+        cargarGrupos();
     }
 
     @SuppressWarnings("unchecked")
@@ -45,6 +58,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
         });
 
         botonAgregarGrupo.setText("Agregar Nuevo Grupo");
+        botonAgregarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarGrupoActionPerformed(evt);
+            }
+        });
 
         labelNombreEstudiante.setText("Nombre Estudiante:");
 
@@ -68,17 +86,17 @@ public class VentanaProfesor extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(labelBienvenido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelGrupos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboGrupos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(botonEnviarCorreo)
                             .addComponent(botonAgregarGrupo))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelCorreoEstudiante)
@@ -150,8 +168,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarCorreoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_botonEnviarCorreoActionPerformed
+
+    private void botonAgregarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarGrupoActionPerformed
+        new VentanaAgregarGrupo(this).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonAgregarGrupoActionPerformed
 
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -181,9 +204,24 @@ public class VentanaProfesor extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new VentanaProfesor(venPrincipal).setVisible(true);
+                new VentanaProfesor(new VentanaPrincipal()).setVisible(true);
+               
+               
             }
         });
+    }
+    
+    public VentanaPrincipal getVentanaPrincipal(){
+        return venPrincipal;
+    }
+    
+    //cargarGrupos: método encargado de asignar los grupos del profesor actual al combo box de grupos
+    //Entradas: ninguna
+    //Salidas: ninguna
+    public void cargarGrupos(){
+        for(Grupo grupo: gruposP){
+            comboGrupos.addItem(grupo.getNombre());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

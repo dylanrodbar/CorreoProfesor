@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 //En esta clase se manejan las principales operaciones del programa
 public class Principal {
-    private int profesorActual;
+    private Profesor profesorActual;
     private ArrayList<Profesor> profesores;
 
     public Principal() {
         profesores = new ArrayList<Profesor>();
         profesores.add(new Profesor(1,"Juan","Martinez","1"));
+        profesores.get(0).agregarGrupo(1, "Grupo1");
+        profesores.get(0).agregarGrupo(2, "Grupo2");
         profesores.add(new Profesor(2,"Mario","Rodriguez","2"));
         profesores.add(new Profesor(3,"Maria","Gutierrez","3"));
         profesores.add(new Profesor(4,"Ariana","Jimenez","4"));
@@ -26,6 +28,7 @@ public class Principal {
     public boolean iniciarSesion(int cedula, String contrasenna){
         for(Profesor prof: profesores){
             if(prof.getCedula() == cedula && prof.getContrasenna().compareTo(contrasenna)==0){
+                profesorActual = prof;
                 return true;
             }
         }
@@ -38,6 +41,29 @@ public class Principal {
     public void agregarProfesor(int cedula, String nombre, String apellido, String contrasenna){
         profesores.add(new Profesor(cedula, nombre, apellido, contrasenna));
     }
+    
+    //getProfesorActual: método encargado de obtener el profesor que actualmente utiliza el sistema
+    //Entradas: ninguna
+    //Salidas: el profesor actual
+    public Profesor getProfesorActual(){
+        return profesorActual;
+    }
+    
+    //getNombreProfesorActual: método encargado de obtener el nombre del profesor que actualmente utiliza el sistema
+    //Entradas: ninguna
+    //Salidas: nombre del profesor actual
+    public String getNombreProfesorActual(){
+        return profesorActual.getNombre();
+    }
+    
+    //getApellidoProfesorActual: método encargado de obtener el apellido del profesor que actualmente utiliza el sistema
+    //Entradas: ninguna
+    //Salidas: apellido del profesor actual
+    public String getApellidoProfesorActual(){
+        return profesorActual.getApellido();
+    }
+    
+    
     
     
     

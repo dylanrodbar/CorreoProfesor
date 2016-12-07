@@ -1,9 +1,10 @@
 package interfaz;
 
 public class VentanaAgregarGrupo extends javax.swing.JFrame {
-
-    public VentanaAgregarGrupo() {
+    private VentanaProfesor venProfesor;
+    public VentanaAgregarGrupo(VentanaProfesor venProf) {
         initComponents();
+        venProfesor = venProf;
     }
 
     @SuppressWarnings("unchecked")
@@ -23,6 +24,11 @@ public class VentanaAgregarGrupo extends javax.swing.JFrame {
         labelNombreGrupo.setText("Nombre de Grupo:");
 
         botonAgregarGrupo.setText("Agregar Grupo");
+        botonAgregarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarGrupoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,6 +67,10 @@ public class VentanaAgregarGrupo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAgregarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarGrupoActionPerformed
+        venProfesor.getVentanaPrincipal().getPrincipal().getProfesorActual().agregarGrupo(Integer.parseInt(txtNumeroGrupo.getText()), txtNombreGrupo.getText());
+    }//GEN-LAST:event_botonAgregarGrupoActionPerformed
+
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -88,7 +98,7 @@ public class VentanaAgregarGrupo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaAgregarGrupo().setVisible(true);
+                new VentanaAgregarGrupo(venProfesor).setVisible(true);
             }
         });
     }

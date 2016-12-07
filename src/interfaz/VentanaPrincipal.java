@@ -11,6 +11,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
+    VentanaPrincipal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /*private VentanaPrincipal(Principal principalP) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
@@ -108,8 +112,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        if(principal.iniciarSesion(Integer.parseInt(txtCedula.getText()), txtContrasenna.getText()))
+        if(principal.iniciarSesion(Integer.parseInt(txtCedula.getText()), txtContrasenna.getText())){
             new VentanaProfesor(this).setVisible(true);
+            this.dispose();
+        }
         else
             System.out.println("Error");
             
@@ -145,6 +151,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 new VentanaPrincipal(new Principal()).setVisible(true);
             }
         });
+    }
+    
+    
+    //getPrincipal: obtiene el objeto principal con el que se trabajan los diferentes datos
+    //Entradas: ninguna
+    //Salidas: objeto principal
+    public Principal getPrincipal(){
+        return principal;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

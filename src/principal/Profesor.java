@@ -14,6 +14,7 @@ public class Profesor {
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasenna = contrasenna;
+        this.grupos = new ArrayList<>();
     }
 
     //Métodos Get/Set
@@ -56,5 +57,11 @@ public class Profesor {
     
     //Métodos operacionales
     
-    
+    public void agregarGrupo(int numero, String nombre){
+        grupos.add(new Grupo(numero, nombre));
+        for(Grupo grupo: grupos){
+            System.out.println(grupo.getNumero());
+            System.out.println(grupo.getNombre());
+        }
+    }
 }
