@@ -1,9 +1,10 @@
 package interfaz;
 
 public class VentanaRegistro extends javax.swing.JFrame {
-
-    public VentanaRegistro() {
+    private VentanaPrincipal venPrincipal;
+    public VentanaRegistro(VentanaPrincipal venPrin) {
         initComponents();
+        venPrincipal = venPrin;
     }
 
     VentanaRegistro(VentanaProfesor aThis) {
@@ -22,8 +23,12 @@ public class VentanaRegistro extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
-        txtContrasenna = new javax.swing.JTextField();
         botonRegistro = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtContrasenna = new javax.swing.JPasswordField();
+        txtContrasennaCorreo = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +43,15 @@ public class VentanaRegistro extends javax.swing.JFrame {
         labelContrasenna.setText("Contraseña:");
 
         botonRegistro.setText("Registrarse");
+        botonRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistroActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Correo:");
+
+        jLabel2.setText("Contraseña del Correo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,8 +80,16 @@ public class VentanaRegistro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelContrasenna)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonRegistro))))
+                                .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonRegistro)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtContrasennaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,13 +113,26 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelContrasenna)
                     .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtContrasennaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(botonRegistro)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
+        venPrincipal.getPrincipal().agregarProfesor(Integer.parseInt(txtCedula.getText()), txtNombre.getText(), txtApellido.getText(), 
+                                                        txtContrasenna.getText(), txtCorreo.getText(), txtContrasennaCorreo.getText());
+    }//GEN-LAST:event_botonRegistroActionPerformed
 
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -126,13 +161,15 @@ public class VentanaRegistro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaRegistro().setVisible(true);
+                new VentanaRegistro(venPrincipal).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistro;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelApellido;
     private javax.swing.JLabel labelCedula;
     private javax.swing.JLabel labelContrasenna;
@@ -140,7 +177,9 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel labelRProfesor;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtContrasenna;
+    private javax.swing.JPasswordField txtContrasenna;
+    private javax.swing.JPasswordField txtContrasennaCorreo;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

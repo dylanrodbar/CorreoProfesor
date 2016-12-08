@@ -2,9 +2,12 @@ package interfaz;
 
 public class VentanaAgregarGrupo extends javax.swing.JFrame {
     private VentanaProfesor venProfesor;
+    
     public VentanaAgregarGrupo(VentanaProfesor venProf) {
         initComponents();
         venProfesor = venProf;
+        
+        
     }
 
     @SuppressWarnings("unchecked")

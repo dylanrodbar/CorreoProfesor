@@ -9,12 +9,14 @@ public class Principal {
 
     public Principal() {
         profesores = new ArrayList<Profesor>();
-        profesores.add(new Profesor(1,"Juan","Martinez","1"));
+        profesores.add(new Profesor(1,"Juan","Martinez","1","Correo1","Contr1"));
         profesores.get(0).agregarGrupo(1, "Grupo1");
-        profesores.get(0).agregarGrupo(2, "Grupo2");
-        profesores.add(new Profesor(2,"Mario","Rodriguez","2"));
-        profesores.add(new Profesor(3,"Maria","Gutierrez","3"));
-        profesores.add(new Profesor(4,"Ariana","Jimenez","4"));
+        //profesores.get(0).agregarGrupo(2, "Grupo2");
+        //profesores.get(0).getGrupo(0).annadirEstudiante(1, "E1", "A1", "C1");
+       //profesores.get(0).getGrupo(0).annadirEstudiante(2, "E2", "A2", "C2");
+        profesores.add(new Profesor(2,"Mario","Rodriguez","2","Correo2","Contr2"));
+        profesores.add(new Profesor(3,"Maria","Gutierrez","3","Correo3","Contr3"));
+        profesores.add(new Profesor(4,"Ariana","Jimenez","4","Correo4","Contr4"));
     }
     
     
@@ -38,8 +40,12 @@ public class Principal {
     //agregarProfesor: método encargado de añadir un profesor a la lista de profesores
     //Entradas: cédula, nombre, apellido y contraseña del profesor por registrar
     //Salidas: ninguna
-    public void agregarProfesor(int cedula, String nombre, String apellido, String contrasenna){
-        profesores.add(new Profesor(cedula, nombre, apellido, contrasenna));
+    public void agregarProfesor(int cedula, String nombre, String apellido, String contrasenna, String correo, String contrasennaCorreo){
+        profesores.add(new Profesor(cedula, nombre, apellido, contrasenna, correo, contrasennaCorreo));
+        for(Profesor profesor:profesores){
+            System.out.println(profesor.getNombre());
+            System.out.println(profesor.getApellido());
+        }
     }
     
     //getProfesorActual: método encargado de obtener el profesor que actualmente utiliza el sistema

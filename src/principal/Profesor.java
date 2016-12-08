@@ -5,15 +5,19 @@ import java.util.ArrayList;
 public class Profesor {
     private int cedula;
     private String nombre;
-    private String apellido;
+    private String apellido; 
     private String contrasenna;
+    private String correo;
+    private String contrasennaCorreo;
     private ArrayList<Grupo> grupos;
 
-    public Profesor(int cedula, String nombre, String apellido, String contrasenna) {
+    public Profesor(int cedula, String nombre, String apellido, String contrasenna,String correo, String contrasennaCorreo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasenna = contrasenna;
+        this.correo = correo;
+        this.contrasennaCorreo = contrasennaCorreo;
         this.grupos = new ArrayList<>();
     }
 
@@ -51,8 +55,28 @@ public class Profesor {
         this.contrasenna = contrasenna;
     }
     
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContrasennaCorreo() {
+        return contrasennaCorreo;
+    }
+
+    public void setContrasennaCorreo(String contrasennaCorreo) {
+        this.contrasennaCorreo = contrasennaCorreo;
+    }
+    
     public ArrayList<Grupo> getGrupos() {
         return grupos;
+    }
+    
+    public Grupo getGrupo(int numeroGrupo){
+        return grupos.get(numeroGrupo);
     }
     
     //Métodos operacionales
@@ -64,4 +88,6 @@ public class Profesor {
             System.out.println(grupo.getNombre());
         }
     }
+
+    
 }

@@ -10,6 +10,7 @@ public class Grupo {
     public Grupo(int numero, String nombre) {
         this.numero = numero;
         this.nombre = nombre;
+        estudiantes = new ArrayList<>();
     }
 
     //Métodos Get/Set
@@ -29,10 +30,22 @@ public class Grupo {
         this.nombre = nombre;
     }
     
+    public ArrayList<Estudiante> getEstudiantes(){
+        for(Estudiante estudiante: estudiantes){
+            System.out.println(estudiante.getNombre());
+            System.out.println(estudiante.getApellido());
+        }
+        return estudiantes;
+    }
+    
     //Métodos operacionales
     
     public void annadirEstudiante(int cedula, String nombre, String apellido, String correo){
         estudiantes.add(new Estudiante(cedula, nombre, apellido, correo));
+        for(Estudiante estudiante: estudiantes){
+            System.out.println(estudiante.getNombre());
+            System.out.println(estudiante.getApellido());
+        }
         
     }
     
