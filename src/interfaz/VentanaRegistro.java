@@ -130,6 +130,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
+        //Se llama al método de agregar un nuevo profesor de la clase principal
         venPrincipal.getPrincipal().agregarProfesor(Integer.parseInt(txtCedula.getText()), txtNombre.getText(), txtApellido.getText(), 
                                                         txtContrasenna.getText(), txtCorreo.getText(), txtContrasennaCorreo.getText());
     }//GEN-LAST:event_botonRegistroActionPerformed

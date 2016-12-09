@@ -12,8 +12,8 @@ public class Principal {
         profesores.add(new Profesor(1,"Juan","Martinez","1","Correo1","Contr1"));
         profesores.get(0).agregarGrupo(1, "Grupo1");
         //profesores.get(0).agregarGrupo(2, "Grupo2");
-        //profesores.get(0).getGrupo(0).annadirEstudiante(1, "E1", "A1", "C1");
-       //profesores.get(0).getGrupo(0).annadirEstudiante(2, "E2", "A2", "C2");
+        profesores.get(0).getGrupo(0).annadirEstudiante(1, "E1", "A1", "C1");
+        profesores.get(0).getGrupo(0).annadirEstudiante(2, "E2", "A2", "C2");
         profesores.add(new Profesor(2,"Mario","Rodriguez","2","Correo2","Contr2"));
         profesores.add(new Profesor(3,"Maria","Gutierrez","3","Correo3","Contr3"));
         profesores.add(new Profesor(4,"Ariana","Jimenez","4","Correo4","Contr4"));

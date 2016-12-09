@@ -12,6 +12,8 @@ public class VentanaCorreo extends javax.swing.JFrame {
         initComponents();
         venProfesor = venProf;
         numeroGrupo = numGrupo;
+        
+        //Se obtienen los estudiantes pertenecientes al grupo actual
         estudiantes = venProfesor.getVentanaPrincipal().getPrincipal().getProfesorActual().getGrupo(numeroGrupo).getEstudiantes();
         modelo = (DefaultTableModel) tablaEstudiantes.getModel();
     }
@@ -109,6 +111,9 @@ public class VentanaCorreo extends javax.swing.JFrame {
         });
     }
     
+    //cargarEstudiantes: método encargado de cargar en una tabla los estudiantes pertenecientes al grupo actual
+    //Entradas: ninguna
+    //Salidas: ninguna
     public void cargarEstudiantes(){
         for(Estudiante estudiante: estudiantes){
             modelo.addRow(new Object[]{estudiante.getCedula(), estudiante.getNombre(),

@@ -1,6 +1,7 @@
 package interfaz;
 import java.util.ArrayList;
 import principal.Grupo;
+import principal.Estudiante;
 
 public class VentanaProfesor extends javax.swing.JFrame {
     private VentanaPrincipal venPrincipal;
@@ -13,9 +14,12 @@ public class VentanaProfesor extends javax.swing.JFrame {
         
         this.venPrincipal = venPrin;
         
+        //Se indica el nombre del profesor que inició sesión
         labelProfesor.setText(venPrincipal.getPrincipal().getNombreProfesorActual()
                               + " " + venPrincipal.getPrincipal().getApellidoProfesorActual());
         //Se obtienen los grupos del profesor actual
+        
+        //Se obtienen los grupos correspondientes al profesor que inició sesión
         gruposP = venPrincipal.getPrincipal().getProfesorActual().getGrupos();
         
         cargarGrupos();
@@ -84,6 +88,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
         labelAEstudiante.setText("Agregar un estudiante");
 
         botonModificarEstudiante.setText("Modificar Estudiante");
+        botonModificarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarEstudianteActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Modificar Datos de su Cuenta");
 
@@ -194,19 +203,38 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarCorreoActionPerformed
+        //Se abre la ventana para enviar correos
         new VentanaCorreo(this, comboGrupos.getSelectedIndex()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonEnviarCorreoActionPerformed
 
     private void botonAgregarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarGrupoActionPerformed
+        //Se abre la ventana para añadir grupos
         new VentanaAgregarGrupo(this).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonAgregarGrupoActionPerformed
 
     private void botonAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarEstudianteActionPerformed
+        //Se llama al método para añadir a un nuevo estudiante
         venPrincipal.getPrincipal().getProfesorActual().getGrupo(comboGrupos.getSelectedIndex()).annadirEstudiante(Integer.parseInt(txtCedula.getText()), 
                                                                                         txtNombre.getText(), txtApellido.getText(), txtCorreo.getText());
     }//GEN-LAST:event_botonAgregarEstudianteActionPerformed
+
+    private void botonModificarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarEstudianteActionPerformed
+       Estudiante estudiante = venPrincipal.getPrincipal().getProfesorActual().getGrupo(comboGrupos.getSelectedIndex()).getEstudianteCedula(Integer.parseInt(txtCedula.getText()));
+       
+       //Se advierte que el estudiante digitado no existe
+       if(estudiante == null)
+            System.out.println("");
+       
+       //Se modifican los datos del estudiante
+       else{
+           estudiante.setNombre(txtNombre.getText());
+           estudiante.setApellido(txtApellido.getText());
+           estudiante.setCorreo(txtCorreo.getText());
+           
+       }
+    }//GEN-LAST:event_botonModificarEstudianteActionPerformed
 
     public void main(String args[]) {
         /* Set the Nimbus look and feel */

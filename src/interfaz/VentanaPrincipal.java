@@ -117,16 +117,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        //Si existe el profesor en el registro, se hace el inicio de sesión
         if(principal.iniciarSesion(Integer.parseInt(txtCedula.getText()), txtContrasenna.getText())){
             new VentanaProfesor(this).setVisible(true);
             this.dispose();
         }
+        //Se indica un error en caso contrario
         else
             System.out.println("Error");
             
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Se abre la ventana para realizar el registro
         new VentanaRegistro(this).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

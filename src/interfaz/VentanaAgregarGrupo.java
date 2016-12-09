@@ -71,6 +71,7 @@ public class VentanaAgregarGrupo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAgregarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarGrupoActionPerformed
+        //Se llama al método para agregar un nuevo grupo
         venProfesor.getVentanaPrincipal().getPrincipal().getProfesorActual().agregarGrupo(Integer.parseInt(txtNumeroGrupo.getText()), txtNombreGrupo.getText());
     }//GEN-LAST:event_botonAgregarGrupoActionPerformed
 

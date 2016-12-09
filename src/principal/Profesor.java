@@ -81,6 +81,9 @@ public class Profesor {
     
     //Métodos operacionales
     
+    //agregarGrupo: método encargado de añadir un nuevo grupo al sistema
+    //Entradas: numero de grupo, nombre del grupo
+    //Salidas: ninguna
     public void agregarGrupo(int numero, String nombre){
         grupos.add(new Grupo(numero, nombre));
         for(Grupo grupo: grupos){
